@@ -4,27 +4,27 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/damndelion/SDUassignments/assignment2/internal/entity"
+	"github.com/damndelion/SDUassignments/virtualization/assignment1/internal/entity"
 	"github.com/gorilla/mux"
 	"net/http"
 )
 
-type router struct {
+type studentRouter struct {
 	mux *mux.Router
 	db  *sql.DB
 }
 
 func NewRouter(mux *mux.Router, db *sql.DB) {
-	router := &router{mux, db}
+	router := &studentRouter{mux, db}
 	mux.HandleFunc("/get", router.getAll).Methods("GET")
 	mux.HandleFunc("/get/{id}", router.getByID).Methods("GET")
-	mux.HandleFunc("/create", router.create).Methods("POST")
+	mux.HandleFunc("/create", router.createStudent).Methods("POST")
 	mux.HandleFunc("/update/{id}", router.update).Methods("PUT")
 	mux.HandleFunc("/delete/{id}", router.delete).Methods("DELETE")
 
 }
 
-func (router router) getByID(w http.ResponseWriter, r *http.Request) {
+func (router studentRouter) getByID(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 
 	stud := entity.Student{}
@@ -37,7 +37,7 @@ func (router router) getByID(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, stud)
 }
 
-func (router router) getAll(w http.ResponseWriter, r *http.Request) {
+func (router studentRouter) getAll(w http.ResponseWriter, r *http.Request) {
 
 	rows, err := router.db.Query("SELECT * FROM students")
 	if err != nil {
@@ -70,7 +70,7 @@ func (router router) getAll(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (router router) create(w http.ResponseWriter, r *http.Request) {
+func (router studentRouter) createStudent(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var newStudent entity.Student
 	err := decoder.Decode(&newStudent)
@@ -95,7 +95,7 @@ func (router router) create(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Student created successfully!")
 }
 
-func (router router) update(w http.ResponseWriter, r *http.Request) {
+func (router studentRouter) update(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	decoder := json.NewDecoder(r.Body)
 	var updatedStudent entity.Student
@@ -121,7 +121,7 @@ func (router router) update(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Student updated successfully!")
 }
 
-func (router router) delete(w http.ResponseWriter, r *http.Request) {
+func (router studentRouter) delete(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 
 	stmt, err := router.db.Prepare("DELETE FROM students WHERE id = ?")

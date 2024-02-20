@@ -1,7 +1,7 @@
 package main
 
-import "github.com/damndelion/SDUassignments/assignment2/internal/applicator"
+import "github.com/damndelion/SDUassignments/assignment2/internal/app"
 
 func main() {
-	applicator.Run()
+	app.Run()
 }

@@ -2,8 +2,8 @@ package applicator
 
 import (
 	"fmt"
-	"github.com/damndelion/SDUassignments/assignment2/db"
-	"github.com/damndelion/SDUassignments/assignment2/internal/controller"
+	"github.com/damndelion/SDUassignments/virtualization/assignment1/db"
+	"github.com/damndelion/SDUassignments/virtualization/assignment1/internal/controller"
 	"github.com/gorilla/mux"
 	"net/http"
 )
