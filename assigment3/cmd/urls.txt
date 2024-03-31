@@ -1,0 +1,10 @@
+https://api.coincap.io/v2/assets/bitcoin
+https://api.coincap.io/v2/assets/ethereum
+https://api.coincap.io/v2/assets/tether
+https://api.coincap.io/v2/assets/binance-coin
+https://api.coincap.io/v2/assets/solana
+https://api.coincap.io/v2/assets/usd-coin
+https://api.coincap.io/v2/assets/dogecoin
+https://api.coincap.io/v2/assets/xrp
+https://api.coincap.io/v2/assets/cardano
+https://api.coincap.io/v2/assets/avalanche

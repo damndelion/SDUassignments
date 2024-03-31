@@ -41,3 +41,6 @@ func main() {
 	entity2.DisplayInfo(e1)
 
 }
+func myfunc() (int, string, bool, int, int, int, int) {
+	return 0, "", true, 0, 0, 0, 0
+}

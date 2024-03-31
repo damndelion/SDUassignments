@@ -11,7 +11,7 @@ import (
 func ConnectMySql() (*gorm.DB, error) {
 	err := godotenv.Load(".env")
 	if err != nil {
-		return nil, fmt.Errorf("Error loading .env file: %w", err)
+		return nil, fmt.Errorf("Error loading .env file2222: %w", err)
 	}
 
 	username := os.Getenv("MYSQL_USERNAME")
